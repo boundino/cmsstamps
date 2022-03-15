@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <script src="https://kit.fontawesome.com/1b7d79a1ac.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Roboto:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="general.css">
-    <style>
-      svg text {
-      font-family: sans-serif; 
-      font-weight: bold;
-      padding: 0;
-      }
-    </style>
     <title>CMS Conference Stamps</title>
   </head>
   <body>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
     <script src="svg.js"></script>
+    <script src="save.js"></script>
 
     <h1>CMS Conference Stamps</h1>
-    <div class="setup"><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
+      <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="100" max="220" class="slider" id="slidert" oninput="setattr()"></div>
-    <div class="setup"><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
+      <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="100" max="220" class="slider" id="sliderb" oninput="setattr()"></div>
-    <div class="setup"><input type="text" id="inputm" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputm" onkeyup="setattr()" placeholder="">
+      <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="30" max="50" class="slider" id="sliderm" oninput="setattr()"></div>
-    <div class="setup"><input type="color" id="colorpicker" class="colorpicker" onchange="setattr(); ">
+    <div class="setup"><i class="fa-solid fa-palette"></i><input type="color" id="colorpicker" class="colorpicker" onchange="setattr(); ">
+      <button onclick="reset(); setattr();">Reset</button><button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
     </div>
     <script>reset()</script>
     <div>
@@ -42,5 +44,6 @@
       </svg>
     </div>
     <script>draw()</script>
+    <div class="footer">CMS HIN &copy; 2022</div>
   </body>
 </html>

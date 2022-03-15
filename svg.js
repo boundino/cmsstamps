@@ -95,6 +95,10 @@ function setattr() {
         graphs[i].style.stroke = color();
     let texts = document.getElementsByTagName('text');
     for(var i=0; i<texts.length; i++)
-        texts[i].style.fill = color();
+        {
+            texts[i].style.fontFamily = 'sans-serif';
+            texts[i].style.fontWeight = 'bold';
+            texts[i].style.fill = color();
+        }
 }
 

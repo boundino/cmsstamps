@@ -8,6 +8,7 @@
 
 html{
     font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3vw;
     font-weight: 300;
     color: black;
     overflow-y: scroll;
@@ -35,10 +36,34 @@ p {
 }
 
 h1 {
-        font-size: 2rem;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
+        font-size: 1.7rem;
+    margin-block-start: 2rem;
+    margin-block-end: 1.5rem;
     font-weight: inherit;
+}
+
+input, button {
+       margin: 0 0.5rem;
+    vertical-align: middle;
+}
+
+button {
+    border: none;
+    background-color: var(--gray);
+    color: black;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+button:active {
+    filter: brightness(50%);
 }
 
 input[type=text] {
@@ -67,7 +92,7 @@ input[type=range] {
 
 .slider {
     -webkit-appearance: none;
-    width: 10rem;
+    width: 7rem;
     height: 1.2rem;
     border-radius: 0.3rem;
     background: var(--gray);
@@ -103,22 +128,29 @@ input[type=range] {
     cursor: pointer;
     background-color: var(--gray);
     width: 2rem;
-    height: 2rem;
+    height: 1.8rem;
     margion: 0;
 }
 
+.footer {
+font-size: 0.9rem;
+color: #e5e5e5;
+margin-top: 4rem;
+}
+
 .setup {
-margin: 0.2rem 0;
+margin: 0.5rem 0;
 }
 
-@media (orientation:landscape) {
- html {
-        font-size: 1.2vw;
-    }
+@media screen and (max-width: 1300px) {
+ html { font-size: 2vw; }
 }
 
-@media (orientation:portrait) {
-  html {
-        font-size: 3vw;
-    }
+@media screen and (max-width: 900px) {
+ html { font-size: 3vw; }
 }
+
+@media screen and (max-width: 500px) {
+ html { font-size: 4.5vw; }
+}
+
