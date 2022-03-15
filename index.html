@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A compilation tool of heavy flavor measurements in heavy ion collisions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Roboto:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="general.css">
+    <style>
+      svg text {
+      font-family: sans-serif; 
+      font-weight: bold;
+      padding: 0;
+      }
+    </style>
+    <title>CMS Conference Stamps</title>
+  </head>
   <body>
     <script src="svg.js"></script>
-    <svg id="svg" height="400" width="400" style="background-color: yellow;">
-      <!--       <rect id="rect" x="100" y="175"  rx="10" ry="10" width="200" height="50" style="fill:transparent; stroke-width:5; stroke:rgb(0,0,0); " transform="rotate(-15 200,200)" /> -->
-      <!--       Sorry, your browser does not support inline SVG.  -->
-      <text style="font-size: 50; font-family: sans-serif; font-weight: bold;" dy="50">
-        <textPath href="#innert" startOffset="50%" text-anchor="middle"  textLength="170" lengthAdjust="spacing">
-          <!--         <textPath href="#innert" startOffset="50%" text-anchor="middle"  letter-spacing="15" lengthAdjust="spacing"> -->
-          CMS
-        </textPath>
-      </text>
-      <text style="font-size: 50; font-family: sans-serif; font-weight: bold;" dy="-12">
-        <textPath href="#innerb" startOffset="50%" text-anchor="middle"  textLength="200" lengthAdjust="spacing">
-          QM22
-        </textPath>
-      </text>
-    </svg>
-    <script>draw()</script>
 
+    <h1>CMS Conference Stamps</h1>
+    <div class="setup"><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
+      <input type="range" min="100" max="220" class="slider" id="slidert" oninput="setattr()"></div>
+    <div class="setup"><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
+      <input type="range" min="100" max="220" class="slider" id="sliderb" oninput="setattr()"></div>
+    <div class="setup"><input type="text" id="inputm" onkeyup="setattr()" placeholder="">
+      <input type="range" min="30" max="50" class="slider" id="sliderm" oninput="setattr()"></div>
+    <div class="setup"><input type="color" id="colorpicker" class="colorpicker" onchange="setattr(); ">
+    </div>
+    <script>reset()</script>
+    <div>
+      <svg id="svg" height="300" width="300" style="background-color: transparent;">
+        <text dy="44">
+          <textPath id="textt" href="#innert" startOffset="50%" text-anchor="middle"  textLength="160" lengthAdjust="spacing"></textPath>
+        </text>
+        <text dy="-13">
+          <textPath id="textb" href="#innerb" startOffset="50%" text-anchor="middle"  textLength="200" lengthAdjust="spacing"></textPath>
+        </text>
+        <text id="textm" dy="5"></text>
+      </svg>
+    </div>
+    <script>draw()</script>
   </body>
 </html>
