@@ -45,6 +45,7 @@ h1 {
 input, button {
        margin: 0 0.5rem;
     vertical-align: middle;
+    border-radius: 0.2rem;
 }
 
 button {
@@ -72,7 +73,6 @@ input[type=text] {
     color: inherit;
     opacity: 0.9;
     border: 1px solid var(--gray);
-    border-radius: 0.3rem;
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
@@ -94,7 +94,6 @@ input[type=range] {
     -webkit-appearance: none;
     width: 7rem;
     height: 1.2rem;
-    border-radius: 0.3rem;
     background: var(--gray);
     outline: none;
     opacity: 0.9;
@@ -123,7 +122,7 @@ input[type=range] {
     border-radius: 50%;
 }
 
-.colorpicker {
+input[type=color] {
     border-width: 0;
     cursor: pointer;
     background-color: var(--gray);
