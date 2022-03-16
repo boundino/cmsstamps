@@ -161,6 +161,8 @@ function setattr() {
         texts[i].style.fontWeight = 'bold';
         texts[i].style.fill = color();
     }
+
+    seturl();
 }
 
 function changetype()
