@@ -1,4 +1,4 @@
-var lcanvas, svg, type;
+var lcanvas, svg;
 function w() { return lcanvas*0.95; }
 function h() { return w()/4; }
 function theta() { return 15; }
@@ -140,6 +140,18 @@ function setattr() {
     let graphfs = document.getElementsByClassName('graphf');
     for(var i=0; i<graphfs.length; i++)
         graphfs[i].style.fill = color();
+
+    let effects = document.getElementsByClassName('fileffect');
+    for(var i=0; i<effects.length; i++)
+    {
+        effects[i].style.display = 'none';
+        effects[i].style.filter = parseInt(document.getElementById('effect').value)>0?"url(#inkFilter)":"";
+    }
+
+    let groupdraw = 'group' + document.getElementById('type').value;
+    let groupdraws = document.getElementsByClassName(groupdraw);
+    for(var i=0; i<groupdraws.length; i++)
+        groupdraws[i].style.display = 'block';    
     
     let texts = document.getElementsByTagName('text');
     for(var i=0; i<texts.length; i++)
@@ -152,26 +164,12 @@ function setattr() {
 
 function changetype()
 {
-    let graphs = document.getElementsByClassName('graph');
-    for(var i=0; i<graphs.length; i++)
-        graphs[i].style.display = 'none';
-    let graphfs = document.getElementsByClassName('graphf');
-    for(var i=0; i<graphfs.length; i++)
-        graphfs[i].style.display = 'none';
-    let groupdraw = 'group' + (type++)%2;
-    let groupdraws = document.getElementsByClassName(groupdraw);
-    for(var i=0; i<groupdraws.length; i++)
-        groupdraws[i].style.display = 'block';
+    document.getElementById('type').value = (parseInt(document.getElementById('type').value)+1)%2;
+    setattr();
 }
 
-function addfilter()
+function changeeffect()
 {
-    let fileffects = document.getElementsByClassName('fileffect');
-    for(var i=0; i<fileffects.length; i++)
-    {
-        if(fileffects[i].style.filter == "")
-            fileffects[i].style.filter = "url(#inkFilter)";
-        else
-            fileffects[i].style.filter = "";
-    }
+    document.getElementById('effect').value = (parseInt(document.getElementById('effect').value)+1)%2;
+    setattr();
 }

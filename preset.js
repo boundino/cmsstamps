@@ -9,7 +9,8 @@ var preset_values = {
             'sliderb' : '120',
             'sliderm' : '40',
             'colorpicker' : '#A51D1D',
-            'type' : 1
+            'type' : 1,
+            'effect' : 1
         }
     },
     "qm22final" : {
@@ -22,7 +23,8 @@ var preset_values = {
             'sliderb' : '120',
             'sliderm' : '43',
             'colorpicker' : '#1D34A5',
-            'type' : 0
+            'type' : 1,
+            'effect' : 1,
         }
     },
 }
@@ -42,9 +44,5 @@ function reset() {
     let preset = document.getElementById('presets').value;
     let values = preset_values[preset].value;
     for(var key in values)
-    {
-        if(key=='type') type = values[key];
-        else
-            document.getElementById(key).value = values[key];
-    }
+        document.getElementById(key).value = values[key];
 }
