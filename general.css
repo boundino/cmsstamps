@@ -109,7 +109,7 @@ input[type=range]::-webkit-slider-thumb {
     border: 0.14vw solid black;
     background: black;
     background-image: radial-gradient(white 30%, black 30%);
-    box-shadow: 0 0 0.4rem 0 var(--darkgray); 
+    box-shadow: 0 0 0.3rem 0 var(--darkgray); 
     cursor: pointer;
 }
 
@@ -120,7 +120,7 @@ input[type=range]::-moz-range-thumb {
     border: 0.14vw solid black;
     background: black;
     background-image: radial-gradient(white 30%, black 40%);
-    box-shadow: 0 0 0.4rem 0 var(--darkgray); 
+    box-shadow: 0 0 0.3rem 0 var(--darkgray); 
     cursor: pointer;
 }
 
@@ -129,7 +129,7 @@ input[type=color] {
     cursor: pointer;
     background-color: var(--gray);
     width: 2rem;
-    height: 1.8rem;
+    height: 2rem;
     margion: 0;
 }
 
