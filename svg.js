@@ -8,8 +8,8 @@ function reset() {
     document.getElementById('inputt').value = 'CMS';
     document.getElementById('inputb').value = 'QM22';
     document.getElementById('inputm').value = 'NEW RESULT';
-    document.getElementById('slidert').value = '120';
-    document.getElementById('sliderb').value = '140';
+    document.getElementById('slidert').value = '100';
+    document.getElementById('sliderb').value = '120';
     document.getElementById('sliderm').value = '40';
     document.getElementById('colorpicker').value = '#A51D1D';
 }
@@ -81,17 +81,13 @@ function drawarcgroup(R) {
 function setattr() {
     var tsize = 40/300*w();
     let textt = document.getElementById('textt');
-    textt.setAttribute("textLength", document.getElementById('slidert').value); // for firefox
     let textpt = document.getElementById('textpt');
     textpt.innerHTML = document.getElementById('inputt').value;
     textpt.style.fontSize = tsize+"px";
-    textpt.setAttribute("textLength", document.getElementById('slidert').value);
     let textb = document.getElementById('textb');
-    textb.setAttribute("textLength", document.getElementById('sliderb').value); // for firefox
     let textpb = document.getElementById('textpb');
     textpb.innerHTML = document.getElementById('inputb').value;
     textpb.style.fontSize = tsize+"px";
-    textpb.setAttribute("textLength", document.getElementById('sliderb').value);
     let textm = document.getElementById('textm');
     textm.innerHTML = document.getElementById('inputm').value;
     textm.setAttribute("x", lcanvas*0.5);
@@ -102,6 +98,22 @@ function setattr() {
     textm.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
     textm.style.fontSize = document.getElementById('sliderm').value + "px";
 
+    let agent = window.navigator.userAgent.toLowerCase();
+    if(agent.indexOf("safari") > -1 && !window.chrome)
+    {
+        let nt = document.getElementById('inputt').value.length;
+        textpt.setAttribute("letter-spacing", (document.getElementById('slidert').value-nt*tsize*0.7)/(nt-1));
+        let nb = document.getElementById('inputb').value.length;
+        textpb.setAttribute("letter-spacing", (document.getElementById('sliderb').value-nb*tsize*0.7)/(nb-1));
+    }
+    else
+    {
+        textt.setAttribute("textLength", document.getElementById('slidert').value); // for firefox
+        textpt.setAttribute("textLength", document.getElementById('slidert').value)
+        textb.setAttribute("textLength", document.getElementById('sliderb').value); // for firefox
+        textpb.setAttribute("textLength", document.getElementById('sliderb').value);
+    }
+    
     let graphs = document.getElementsByClassName('graph');
     for(var i=0; i<graphs.length; i++)
         graphs[i].style.stroke = color();
