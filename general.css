@@ -50,7 +50,8 @@ input, button {
 }
 
 button {
-    border: none;
+    /* border: none; */
+    border: 1px solid var(--darkgray);
     background-color: var(--gray);
     color: black;
     padding: 0.4rem 1rem;

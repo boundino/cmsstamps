@@ -37,7 +37,7 @@ function drawrect() {
     svg.appendChild(rect);
 }
 
-function drawarc(R, id) {
+function drawarc(R, s, id) {
     if(h()/2 < R)
     {
         var ww = w()/2, hh = h()/2, beta = (R*R < (ww*ww+hh*hh))?Math.acos(hh/R):Math.PI/2;
@@ -50,13 +50,13 @@ function drawarc(R, id) {
 
         let arc = document.createElementNS("http://www.w3.org/2000/svg", "path");
         arc.setAttribute("d", "M "+x1+","+y1+" A "+R+","+R+" 0 0,1 "+x2+","+y2);
-        arc.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
+        arc.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()*s+";");
         arc.setAttribute("id", id+"t");
         svg.appendChild(arc);
 
         let arc2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
         arc2.setAttribute("d", "M "+(lcanvas-x2)+","+(lcanvas-y2)+" A "+R+","+R+" 0 0,0 "+(lcanvas-x1)+","+(lcanvas-y1));
-        arc2.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
+        arc2.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()*s+";");
         arc2.setAttribute("id", id+"b");
         svg.appendChild(arc2);
 
@@ -100,11 +100,10 @@ function drawdet(R, l, s, N, id) {
 }
 
 function drawgroup(R) {
-    drawarc(R, "group0");
-    drawarc(R-stroke_width()*0.9, "group0");
-    drawarc(R-stroke_width()*3, "group0");
-    drawarc((R-stroke_width()*3 + h()/2*1.5)/2, "inner");
-    drawarc(h()/2*1.5, "group0 group1");
+    drawarc(R, 1.8, "group0");
+    drawarc(R-stroke_width()*3, 1, "group0");
+    drawarc(h()/2*1.5, 1, "group0 group1");
+    drawarc((R-stroke_width()*3 + h()/2*1.5)/2, 1, "inner");
     drawdet(R, R*0.53, w()/25, 5, "group1");
     drawdet(R-w()/18, (R-w()/18)*0.55, w()/40, 5, "group1");
 }
