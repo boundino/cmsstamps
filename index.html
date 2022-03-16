@@ -21,7 +21,7 @@
     <h1>CMS Conference Stamps</h1>
     <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-      <input type="range" min="100" max="220" class="slider" id="slidert" oninput="setattr()"></div>
+      <input type="range" min="90" max="200" class="slider" id="slidert" oninput="setattr()"></div>
     <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="100" max="220" class="slider" id="sliderb" oninput="setattr()"></div>
@@ -34,11 +34,11 @@
     <script>reset()</script>
     <div>
       <svg id="svg" height="300" width="300" style="background-color: transparent;">
-        <text dy="44">
-          <textPath id="textt" href="#innert" startOffset="50%" text-anchor="middle"  textLength="160" lengthAdjust="spacing"></textPath>
+        <text id="textt" dy="5">
+          <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" text-align="center"></textPath>
         </text>
-        <text dy="-13">
-          <textPath id="textb" href="#innerb" startOffset="50%" text-anchor="middle"  textLength="200" lengthAdjust="spacing"></textPath>
+        <text id="textb" dy="5">
+          <textPath id="textpb" href="#innerb" startOffset="50%" text-anchor="middle" lengthAdjust="spacing" dominant-baseline="middle" alignment-baseline="middle"></textPath>
         </text>
         <text id="textm" dy="5"></text>
       </svg>
