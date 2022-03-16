@@ -1,4 +1,4 @@
-var lcanvas, svg;
+var lcanvas, svg, type = 1;
 function w() { return lcanvas*0.95; }
 function h() { return w()/4; }
 function theta() { return 15; }
@@ -19,7 +19,7 @@ function draw() {
     lcanvas = svg.clientWidth;
 
     drawrect();
-    drawarcgroup(w()/2*0.9);
+    drawgroup(w()/2*0.9);
     setattr();
 }
 
@@ -32,7 +32,7 @@ function drawrect() {
     rect.setAttribute("width", w());
     rect.setAttribute("height", h());
     rect.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
-    rect.setAttribute("class", "graph");
+    rect.setAttribute("class", "graph group0 group1");
     rect.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
     svg.appendChild(rect);
 }
@@ -51,35 +51,66 @@ function drawarc(R, id) {
         let arc = document.createElementNS("http://www.w3.org/2000/svg", "path");
         arc.setAttribute("d", "M "+x1+","+y1+" A "+R+","+R+" 0 0,1 "+x2+","+y2);
         arc.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
-        arc.setAttribute("class", "graph");
         arc.setAttribute("id", id+"t");
         svg.appendChild(arc);
 
         let arc2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
         arc2.setAttribute("d", "M "+(lcanvas-x2)+","+(lcanvas-y2)+" A "+R+","+R+" 0 0,0 "+(lcanvas-x1)+","+(lcanvas-y1));
         arc2.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
-        arc2.setAttribute("class", "graph");
         arc2.setAttribute("id", id+"b");
         svg.appendChild(arc2);
 
-        if(id !== "")
-        {
-            arc.style.display = "none";
-            arc2.style.display = "none";
-        }
+        arc.setAttribute("class", "graph "+id);
+        arc2.setAttribute("class", "graph "+id);
     }
 }
 
-function drawarcgroup(R) {
-    drawarc(R, "");
-    drawarc(R-stroke_width()*0.9, "");
-    drawarc(R-stroke_width()*3, "");
+function drawdet(R, l, s, N, id) {
+    var ww = w()/2, hh = h()/2,
+        beta = (R*R < (ww*ww+hh*hh))?Math.acos(hh/R):Math.PI/2,
+        delta = beta / N;
+    for(var i=-(N-1)/2; i<=(N-1)/2; i++)
+    {
+        var alpha = theta()/180*Math.PI - 2*i*delta,
+            x = lcanvas/2 - R*Math.sin(alpha),
+            y = lcanvas/2 - R*Math.cos(alpha);
+        let brick = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        brick.setAttribute("x", x-l/2);
+        brick.setAttribute("y", y-s/2);
+        brick.setAttribute("rx", s*0.3);
+        brick.setAttribute("ry", s*0.3);
+        brick.setAttribute("width", l);
+        brick.setAttribute("height", s);
+        brick.setAttribute("style", "stroke-width:0;");
+        brick.setAttribute("class", "graphf "+id);
+        brick.setAttribute("transform", "rotate("+(-alpha*180/Math.PI)+" "+x+","+y+")");
+        svg.appendChild(brick);
+        let brick2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        brick2.setAttribute("x", (lcanvas-x)-l/2);
+        brick2.setAttribute("y", (lcanvas-y)-s/2);
+        brick2.setAttribute("rx", s*0.3);
+        brick2.setAttribute("ry", s*0.3);
+        brick2.setAttribute("width", l);
+        brick2.setAttribute("height", s);
+        brick2.setAttribute("style", "stroke-width:0;");
+        brick2.setAttribute("class", "graphf "+id);
+        brick2.setAttribute("transform", "rotate("+(-alpha*180/Math.PI)+" "+(lcanvas-x)+","+(lcanvas-y)+")");
+        svg.appendChild(brick2);
+    }
+}
+
+function drawgroup(R) {
+    drawarc(R, "group0");
+    drawarc(R-stroke_width()*0.9, "group0");
+    drawarc(R-stroke_width()*3, "group0");
     drawarc((R-stroke_width()*3 + h()/2*1.5)/2, "inner");
-    drawarc(h()/2*1.5, "");
+    drawarc(h()/2*1.5, "group0 group1");
+    drawdet(R, R*0.53, w()/25, 5, "group1");
+    drawdet(R-w()/18, (R-w()/18)*0.55, w()/40, 5, "group1");
 }
 
 function setattr() {
-    var tsize = 40/300*w();
+    var tsize = 40/285*w();
     let textt = document.getElementById('textt');
     let textpt = document.getElementById('textpt');
     textpt.innerHTML = document.getElementById('inputt').value;
@@ -117,6 +148,10 @@ function setattr() {
     let graphs = document.getElementsByClassName('graph');
     for(var i=0; i<graphs.length; i++)
         graphs[i].style.stroke = color();
+    let graphfs = document.getElementsByClassName('graphf');
+    for(var i=0; i<graphfs.length; i++)
+        graphfs[i].style.fill = color();
+    
     let texts = document.getElementsByTagName('text');
     for(var i=0; i<texts.length; i++)
     {
@@ -126,3 +161,16 @@ function setattr() {
     }
 }
 
+function changetype()
+{
+   let graphs = document.getElementsByClassName('graph');
+    for(var i=0; i<graphs.length; i++)
+        graphs[i].style.display = 'none';
+    let graphfs = document.getElementsByClassName('graphf');
+    for(var i=0; i<graphfs.length; i++)
+        graphfs[i].style.display = 'none';
+    let groupdraw = 'group' + (type++)%2;
+    let groupdraws = document.getElementsByClassName(groupdraw);
+    for(var i=0; i<groupdraws.length; i++)
+        groupdraws[i].style.display = 'block';
+}

@@ -29,6 +29,7 @@
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="30" max="50" class="slider" id="sliderm" oninput="setattr()"></div>
     <div class="setup"><i class="fa-solid fa-palette"></i><input type="color" id="colorpicker" onchange="setattr(); ">
+      <button onclick="changetype();">Type</button>
       <button onclick="reset(); setattr();">Reset</button><button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
     </div>
     <script>reset()</script>
@@ -44,6 +45,7 @@
       </svg>
     </div>
     <script>draw()</script>
+    <script>changetype()</script>
     <div class="footer">CMS HIN &copy; 2022</div>
   </body>
 </html>
