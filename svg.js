@@ -107,7 +107,7 @@ function drawgroup(R) {
     drawarc((R-stroke_width()*3 + h()/2*1.5)/2, 1, "inner");
     // det
     drawdet(R, R*0.53, w()/25, 5, 3, "group1");
-    drawdet(R-w()/18, (R-w()/18)*0.55, w()/40, 5, 0, "group1");
+    drawdet(R-w()/16, (R-w()/16)*0.53, w()/40, 5, 0, "group1");
 }
 
 function setattr() {
