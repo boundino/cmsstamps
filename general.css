@@ -44,7 +44,7 @@ h1 {
 }
 
 input, button {
-    margin: 0 0.4rem;
+    margin: 0 0.3rem;
     vertical-align: middle;
     border-radius: 0.2rem;
 }
@@ -54,7 +54,7 @@ button {
     border: 1px solid var(--darkgray);
     background-color: var(--gray);
     color: black;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.9rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;

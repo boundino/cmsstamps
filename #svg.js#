@@ -1,4 +1,4 @@
-var lcanvas, svg, type = 1;
+gvar lcanvas, svg, type = 1;
 function w() { return lcanvas*0.95; }
 function h() { return w()/4; }
 function theta() { return 15; }
