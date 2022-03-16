@@ -102,29 +102,30 @@ function drawgroup(R) {
 }
 
 function setattr() {
-    var tsize = 40/285*w();
+    var tsize_t = document.getElementById('sliderft').value,
+        tsize_b = document.getElementById('sliderfb').value;
     let textt = document.getElementById('textt');
     let textpt = document.getElementById('textpt');
     textpt.innerHTML = document.getElementById('inputt').value;
-    textpt.style.fontSize = tsize+"px";
+    textpt.style.fontSize = tsize_t + "px";
     let textb = document.getElementById('textb');
     let textpb = document.getElementById('textpb');
     textpb.innerHTML = document.getElementById('inputb').value;
-    textpb.style.fontSize = tsize+"px";
+    textpb.style.fontSize = tsize_b + "px";
     let textm = document.getElementById('textm');
     textm.innerHTML = document.getElementById('inputm').value;
     textm.setAttribute("x", lcanvas*0.5);
     textm.setAttribute("y", lcanvas*0.5);
     textm.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
-    textm.style.fontSize = document.getElementById('sliderm').value + "px";
+    textm.style.fontSize = document.getElementById('sliderfm').value + "px";
 
     let agent = window.navigator.userAgent.toLowerCase();
     if(agent.indexOf("safari") > -1 && !window.chrome)
     {
         let nt = document.getElementById('inputt').value.length;
-        textpt.setAttribute("letter-spacing", (document.getElementById('slidert').value-nt*tsize*0.7)/(nt-1));
+        textpt.setAttribute("letter-spacing", (document.getElementById('slidert').value-nt*tsize_t*0.7)/(nt-1));
         let nb = document.getElementById('inputb').value.length;
-        textpb.setAttribute("letter-spacing", (document.getElementById('sliderb').value-nb*tsize*0.7)/(nb-1));
+        textpb.setAttribute("letter-spacing", (document.getElementById('sliderb').value-nb*tsize_b*0.7)/(nb-1));
     }
     else
     {

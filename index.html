@@ -23,13 +23,19 @@
     <h1>CMS Conference Stamps</h1>
     <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-      <input type="range" min="60" max="180" class="slider" id="slidert" oninput="setattr()"></div>
-    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
-      <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-      <input type="range" min="60" max="180" class="slider" id="sliderb" oninput="setattr()"></div>
+      <input type="range" min="60" max="180" class="slider" id="slidert" oninput="setattr()">
+      <i class="fa-solid fa-text-height"></i>
+      <input type="range" min="20" max="60" class="slider" id="sliderft" oninput="setattr()"></div>
     <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputm" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-      <input type="range" min="30" max="50" class="slider" id="sliderm" oninput="setattr()"></div>
+      <input type="range" min="60" max="180" class="slider" id="sliderm" oninput="setattr()" disabled>
+      <i class="fa-solid fa-text-height"></i>
+      <input type="range" min="20" max="60" class="slider" id="sliderfm" oninput="setattr()"></div>
+    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
+      <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+      <input type="range" min="60" max="180" class="slider" id="sliderb" oninput="setattr()">
+      <i class="fa-solid fa-text-height"></i>
+      <input type="range" min="20" max="60" class="slider" id="sliderfb" oninput="setattr()"></div>
     <div class="setup"><input type="color" id="colorpicker" onchange="setattr(); ">
       <button onclick="changetype();">Type<input type="number" id="type" style="display:none"></input></button>
       <button onclick="changeeffect();"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
@@ -40,9 +46,9 @@
     <div>
       <svg id="svg" height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
         <filter id="inkFilter">
-          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="7" />
+          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="3" result="TURBULENCE"/>
           <!-- <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="7" /> -->
-          <feDisplacementMap in="SourceGraphic" scale="4" />
+          <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="3" />
         </filter>
         <text id="textt" dy="5">
           <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></textPath>
