@@ -43,30 +43,43 @@ h1 {
     font-weight: inherit;
 }
 
-input, button {
+input, button, select {
     margin: 0 0.3rem;
     vertical-align: middle;
     border-radius: 0.2rem;
 }
 
-button {
+button, select {
     /* border: none; */
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
     border: 1px solid var(--darkgray);
     background-color: var(--gray);
     color: black;
-    padding: 0.4rem 0.9rem;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
     cursor: pointer;
-    -webkit-appearance: none;
+}
+
+button {
+    padding: 0.4rem 0.9rem;
+    text-align: center;
 }
 
 button:active {
     filter: brightness(50%);
+}
+
+select {
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjEuNDEgNC42NyAyLjQ4IDMuMTggMy41NCA0LjY3IDEuNDEgNC42NyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIzLjU0IDUuMzMgMi40OCA2LjgyIDEuNDEgNS4zMyAzLjU0IDUuMzMiLz48L3N2Zz4=) no-repeat 95% 50%;
+    background-color: var(--gray);
+    color: black;
+    text-align: left;
+    padding: 0.4rem 1.5rem 0.4rem 0.4rem;
 }
 
 input[type=text] {

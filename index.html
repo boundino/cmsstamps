@@ -17,6 +17,7 @@
   </head>
   <body>
     <script src="svg.js"></script>
+    <script src="preset.js"></script>
     <script src="save.js"></script>
 
     <h1>CMS Conference Stamps</h1>
@@ -30,10 +31,12 @@
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="30" max="50" class="slider" id="sliderm" oninput="setattr()"></div>
     <div class="setup"><input type="color" id="colorpicker" onchange="setattr(); ">
-      <button onclick="changetype();">Type</button><button onclick="addfilter();"><i class="fa-solid fa-stamp"></i></button>
-      <button onclick="reset(); setattr();">Reset</button><button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
+      <button onclick="changetype();">Type</button>
+      <button onclick="addfilter();"><i class="fa-solid fa-stamp"></i></button>
+      <select id="presets" onchange="reset(); setattr();"></select>
+      <button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
     </div>
-    <script>reset()</script>
+    <script>listpreset(); reset();</script>
     <div>
       <svg id="svg" height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
         <filter id="inkFilter">

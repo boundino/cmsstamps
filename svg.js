@@ -1,18 +1,9 @@
-var lcanvas, svg, type = 1;
+var lcanvas, svg, type;
 function w() { return lcanvas*0.95; }
 function h() { return w()/4; }
 function theta() { return 15; }
 function stroke_width() { return 6; }
 function color() { return document.getElementById('colorpicker').value; }
-function reset() {
-    document.getElementById('inputt').value = 'CMS';
-    document.getElementById('inputb').value = 'QM22';
-    document.getElementById('inputm').value = 'NEW RESULT';
-    document.getElementById('slidert').value = '100';
-    document.getElementById('sliderb').value = '120';
-    document.getElementById('sliderm').value = '40';
-    document.getElementById('colorpicker').value = '#A51D1D';
-}
 
 function draw() {
     svg = document.getElementById('svg');
