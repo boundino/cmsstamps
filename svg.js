@@ -65,7 +65,7 @@ function drawarc(R, s, id) {
     }
 }
 
-function drawdet(R, l, s, N, id) {
+function drawdet(R, l, s, N, del, id) {
     var ww = w()/2, hh = h()/2,
         beta = (R*R < (ww*ww+hh*hh))?Math.acos(hh/R):Math.PI/2,
         delta = beta / N;
@@ -83,7 +83,7 @@ function drawdet(R, l, s, N, id) {
         brick.setAttribute("height", s);
         brick.setAttribute("style", "stroke-width:0;");
         brick.setAttribute("class", "graphf "+id);
-        brick.setAttribute("transform", "rotate("+(-alpha*180/Math.PI)+" "+x+","+y+")");
+        brick.setAttribute("transform", "rotate("+(-alpha*180/Math.PI+del)+" "+x+","+y+")");
         svg.appendChild(brick);
         let brick2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         brick2.setAttribute("x", (lcanvas-x)-l/2);
@@ -94,18 +94,20 @@ function drawdet(R, l, s, N, id) {
         brick2.setAttribute("height", s);
         brick2.setAttribute("style", "stroke-width:0;");
         brick2.setAttribute("class", "graphf "+id);
-        brick2.setAttribute("transform", "rotate("+(-alpha*180/Math.PI)+" "+(lcanvas-x)+","+(lcanvas-y)+")");
+        brick2.setAttribute("transform", "rotate("+(-alpha*180/Math.PI+del)+" "+(lcanvas-x)+","+(lcanvas-y)+")");
         svg.appendChild(brick2);
     }
 }
 
 function drawgroup(R) {
+    // arc
     drawarc(R, 1.8, "group0");
     drawarc(R-stroke_width()*3, 1, "group0");
     drawarc(h()/2*1.5, 1, "group0 group1");
     drawarc((R-stroke_width()*3 + h()/2*1.5)/2, 1, "inner");
-    drawdet(R, R*0.53, w()/25, 5, "group1");
-    drawdet(R-w()/18, (R-w()/18)*0.55, w()/40, 5, "group1");
+    // det
+    drawdet(R, R*0.53, w()/25, 5, 3, "group1");
+    drawdet(R-w()/18, (R-w()/18)*0.55, w()/40, 5, 0, "group1");
 }
 
 function setattr() {
