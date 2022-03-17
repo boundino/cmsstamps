@@ -47,11 +47,16 @@
     </div>
     <script>listpreset(); reset(); geturl();</script>
     <div>
-      <svg id="svg" height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
-        <filter id="inkFilter">
-          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
-          <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
-        </filter>
+      <svg id="svg" height="356.25" width="356.25" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
+        <filter id="inkFilter2">
+            <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
+            <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
+          </filter>
+        <defs>
+          <mask id="inkFilter1">
+            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xlink:href="bags/Texture9.png"/>
+          </mask>
+        </defs>
         <text id="textt" dy="5">
           <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></textPath>
         </text>

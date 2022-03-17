@@ -1,5 +1,5 @@
 var lcanvas, svg;
-function w() { return lcanvas*0.95; }
+function w() { return lcanvas*0.8; }
 function h() { return w()/4; }
 function theta() { return 15; }
 function stroke_width() { return 6; }
@@ -9,8 +9,8 @@ function draw() {
     svg = document.getElementById('svg');
     lcanvas = svg.clientWidth;
 
-    drawrect();
     drawgroup(w()/2*0.9);
+    drawrect();
     setattr();
 }
 
@@ -163,7 +163,13 @@ function setattr() {
     for(var i=0; i<effects.length; i++)
     {
         effects[i].style.display = 'none';
-        effects[i].style.filter = parseInt(document.getElementById('effect').value)>0?"url(#inkFilter)":"";
+        effects[i].style.filter = '';
+        effects[i].style.mask = '';
+        // effects[i].style.filter = parseInt(document.getElementById('effect').value)>0?"url(#inkFilter)":"";
+        if(document.getElementById('effect').value == 2)
+            effects[i].style.filter = "url(#inkFilter2)";
+        if(document.getElementById('effect').value == 1)
+            effects[i].style.mask = "url(#inkFilter1)";
     }
 
     let groupdraw = 'group' + document.getElementById('type').value;
@@ -182,6 +188,6 @@ function changetype()
 
 function changeeffect()
 {
-    document.getElementById('effect').value = (parseInt(document.getElementById('effect').value)+1)%2;
+    document.getElementById('effect').value = (parseInt(document.getElementById('effect').value)+1)%3;
     setattr();
 }
