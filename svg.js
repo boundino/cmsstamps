@@ -129,14 +129,14 @@ function setattr() {
     let agent = window.navigator.userAgent.toLowerCase();
     if(agent.indexOf("safari") > -1 && !window.chrome)
     {
-        for(var s=-20;s<200; s++)
+        for(var s=-50;s<200; s++)
         {
             textpt.setAttribute("letter-spacing", s);
             var textwidth = textt.clientWidth;
             if(textwidth > (document.getElementById('slidert').value*0.9+13))
                 break;
         }
-        for(var s=-20;s<200; s++)
+        for(var s=-50;s<200; s++)
         {
             textpb.setAttribute("letter-spacing", s);
             var textwidth = textb.clientWidth;
