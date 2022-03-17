@@ -39,7 +39,6 @@
     <div class="setup"><input type="color" id="colorpicker" onchange="setattr(); ">
       <button onclick="changetype();">Type<input type="number" id="type" style="display:none"></input></button>
       <button onclick="changeeffect();"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
-      <!-- <select id="presets" onchange="reset(); setattr();"><option value="" disabled selected hidden>Presets</option></select> -->
       <select id="presets" onchange="reset(); setattr();"></select>
       <button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
     </div>
@@ -55,7 +54,7 @@
           <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></textPath>
         </text>
         <text id="textb" dy="5">
-          <textPath id="textpb" href="#innerb" startOffset="50%" text-anchor="middle" lengthAdjust="spacing" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></textPath>
+          <textPath id="textpb" xlink:href="#innerb" startOffset="50%" text-anchor="middle" lengthAdjust="spacing" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></textPath>
         </text>
         <text id="textm" dy="5" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></text>
       </svg>

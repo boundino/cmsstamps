@@ -118,14 +118,31 @@ function setattr() {
     textm.setAttribute("y", lcanvas*0.5);
     textm.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
     textm.style.fontSize = document.getElementById('sliderfm').value + "px";
+    let texts = document.getElementsByTagName('text');
+    for(var i=0; i<texts.length; i++)
+    {
+        texts[i].style.fontFamily = 'sans-serif';
+        texts[i].style.fontWeight = 'bold';
+        texts[i].style.fill = color();
+    }
 
     let agent = window.navigator.userAgent.toLowerCase();
     if(agent.indexOf("safari") > -1 && !window.chrome)
     {
-        let nt = document.getElementById('inputt').value.length;
-        textpt.setAttribute("letter-spacing", (document.getElementById('slidert').value-nt*tsize_t*0.7)/(nt-1));
-        let nb = document.getElementById('inputb').value.length;
-        textpb.setAttribute("letter-spacing", (document.getElementById('sliderb').value-nb*tsize_b*0.7)/(nb-1));
+        for(var s=-20;s<200; s++)
+        {
+            textpt.setAttribute("letter-spacing", s);
+            var textwidth = textt.clientWidth;
+            if(textwidth > (document.getElementById('slidert').value*0.9+13))
+                break;
+        }
+        for(var s=-20;s<200; s++)
+        {
+            textpb.setAttribute("letter-spacing", s);
+            var textwidth = textb.clientWidth;
+            if(textwidth > (document.getElementById('sliderb').value*0.92+15))
+                break;
+        }
     }
     else
     {
@@ -154,15 +171,7 @@ function setattr() {
     for(var i=0; i<groupdraws.length; i++)
         groupdraws[i].style.display = 'block';    
     
-    let texts = document.getElementsByTagName('text');
-    for(var i=0; i<texts.length; i++)
-    {
-        texts[i].style.fontFamily = 'sans-serif';
-        texts[i].style.fontWeight = 'bold';
-        texts[i].style.fill = color();
-    }
-
-    seturl();
+    // seturl();
 }
 
 function changetype()
