@@ -2,9 +2,9 @@ var preset_values = {
     " " : {
         title : 'Presets..',
         value : {
-            'inputt' : 'TEXT 1', 'slidert' : 150, 'sliderft' : 44,
+            'inputt' : 'TEXT 1', 'slidert' : 145, 'sliderft' : 40,
             'inputm' : 'TEXT 2', 'sliderm' : 0, 'sliderfm' : 44,
-            'inputb' : 'TEXT 3', 'sliderb' : 150, 'sliderfb' : 44,
+            'inputb' : 'TEXT 3', 'sliderb' : 150, 'sliderfb' : 40,
             'colorpicker' : '#0f6ea9',
             'type' : 1, 'effect' : 1
         }
