@@ -2,15 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="A compilation tool of heavy flavor measurements in heavy ion collisions.">
+    <meta name="description" content="CMS (CERN) Conference Stamp Generator">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
     <script src="https://kit.fontawesome.com/1b7d79a1ac.js" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
     <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Roboto:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="general.css">
     <title>CMS Stamp Generator</title>
@@ -21,25 +19,30 @@
     <script src="save.js"></script>
 
     <h1>CMS Stamp Generator</h1>
-    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputt" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard hideinmobile"></i>
+      <input type="text" id="inputt" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="60" max="180" class="slider" id="slidert" oninput="setattr()">
       <i class="fa-solid fa-text-height"></i>
       <input type="range" min="20" max="60" class="slider" id="sliderft" oninput="setattr()"></div>
-    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputm" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard hideinmobile"></i>
+      <input type="text" id="inputm" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="60" max="180" class="slider" id="sliderm" oninput="setattr()" disabled>
       <i class="fa-solid fa-text-height"></i>
       <input type="range" min="20" max="60" class="slider" id="sliderfm" oninput="setattr()"></div>
-    <div class="setup"><i class="fa-solid fa-keyboard"></i><input type="text" id="inputb" onkeyup="setattr()" placeholder="">
+    <div class="setup"><i class="fa-solid fa-keyboard hideinmobile"></i>
+      <input type="text" id="inputb" onkeyup="setattr()" placeholder="">
       <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
       <input type="range" min="60" max="180" class="slider" id="sliderb" oninput="setattr()">
       <i class="fa-solid fa-text-height"></i>
       <input type="range" min="20" max="60" class="slider" id="sliderfb" oninput="setattr()"></div>
-    <div class="setup"><input type="color" id="colorpicker" onchange="setattr(); ">
+    <div class="setup"><i class="fa-solid fa-fill-drip hideinmobile"></i>
+      <input type="color" id="colorpicker" onchange="setattr(); ">
       <button onclick="changetype();"><i class="fa-solid fa-repeat"></i><input type="number" id="type" style="display:none"></input></button>
       <button onclick="changeeffect();"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
       <button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
+      <button onclick="copylink();"><i class="fa-solid fa-clipboard"></i></button>
       <select id="presets" onchange="reset(); setattr();"></select>
     </div>
     <script>listpreset(); reset(); geturl();</script>
@@ -47,7 +50,6 @@
       <svg id="svg" height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
         <filter id="inkFilter">
           <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
-          <!-- <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="7" /> -->
           <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
         </filter>
         <text id="textt" dy="5">
@@ -61,5 +63,6 @@
     </div>
     <script>draw()</script>
     <div class="footer">CMS HIN &copy; 2022</div>
+    <div id="dalert" class="alert" style="display:none"></div>
   </body>
 </html>

@@ -57,3 +57,26 @@ function geturl() {
         if(setup.includes(entry[0]))
             document.getElementById(entry[0]).value = entry[1];
 }
+
+function copylink()
+{
+    const urlParams = new URLSearchParams(window.location.search);
+    for(var i=0; i<setup.length; i++)
+        urlParams.set(setup[i], document.getElementById(setup[i]).value);
+    var str = window.location.href + "?" + urlParams.toString();
+    
+    const el = document.createElement('textarea');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    var cl = document.getElementById('dalert');
+    cl.innerHTML = 'Configuration copied: <p style="text-decoration: underline;">' + str + '</p>';
+
+    cl.style.display = 'block';
+    setTimeout(function() {
+        cl.style.display = 'none';
+    }, 1800); // match animation 'flash'
+}
