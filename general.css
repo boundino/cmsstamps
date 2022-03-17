@@ -67,7 +67,7 @@ button, select {
 }
 
 button {
-    padding: 0.4rem 0.9rem;
+    padding: 0.4rem 0.7rem;
     text-align: center;
 }
 
@@ -168,7 +168,7 @@ input[type=color] {
     cursor: pointer;
     background-color: var(--gray);
     width: 2rem;
-    height: 2rem;
+    height: 2.1rem;
     margion: 0;
 }
 
@@ -191,6 +191,6 @@ input[type=color] {
 }
 
 @media screen and (max-width: 500px) {
-    html { font-size: 3.8vw; }
+    html { font-size: 4vw; }
 }
 

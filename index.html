@@ -37,10 +37,10 @@
       <i class="fa-solid fa-text-height"></i>
       <input type="range" min="20" max="60" class="slider" id="sliderfb" oninput="setattr()"></div>
     <div class="setup"><input type="color" id="colorpicker" onchange="setattr(); ">
-      <button onclick="changetype();">Type<input type="number" id="type" style="display:none"></input></button>
+      <button onclick="changetype();"><i class="fa-solid fa-repeat"></i><input type="number" id="type" style="display:none"></input></button>
       <button onclick="changeeffect();"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
-      <select id="presets" onchange="reset(); setattr();"></select>
       <button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
+      <select id="presets" onchange="reset(); setattr();"></select>
     </div>
     <script>listpreset(); reset(); geturl();</script>
     <div>
