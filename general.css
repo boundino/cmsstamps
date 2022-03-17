@@ -46,6 +46,9 @@ h1 {
     font-weight: inherit;
 }
 
+a { text-decoration: none; }
+a:visited { color: inherit; }
+
 input, button, select {
     -moz-appearance: none; 
     -webkit-appearance: none; 
