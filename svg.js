@@ -129,18 +129,18 @@ function setattr() {
     let agent = window.navigator.userAgent.toLowerCase();
     if(agent.indexOf("safari") > -1 && !window.chrome)
     {
-        for(var s=-50;s<200; s++)
+        for(var s=-10;s<200; s++)
         {
             textpt.setAttribute("letter-spacing", s);
             var textwidth = textt.clientWidth;
-            if(textwidth > (document.getElementById('slidert').value*0.9+13))
+            if(textwidth > ((document.getElementById('slidert').value-60)*(parseInt(tsize_t)+66.1)/120+67))
                 break;
         }
-        for(var s=-50;s<200; s++)
+        for(var s=-10;s<200; s++)
         {
             textpb.setAttribute("letter-spacing", s);
             var textwidth = textb.clientWidth;
-            if(textwidth > (document.getElementById('sliderb').value*0.92+15))
+            if(textwidth > ((document.getElementById('sliderb').value-60)*(parseInt(tsize_b)*0.71+81.85)/120+70))
                 break;
         }
     }
