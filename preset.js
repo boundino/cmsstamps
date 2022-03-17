@@ -93,5 +93,5 @@ function copylink()
     cl.style.display = 'block';
     setTimeout(function() {
         cl.style.display = 'none';
-    }, 1800); // match animation 'flash'
+    }, 1500); // match animation 'flash'
 }
