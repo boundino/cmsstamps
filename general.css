@@ -178,7 +178,7 @@ input[type=color] {
     font-size: 0.9rem;
     color: #e5e5e5;
     margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .setup {
@@ -197,9 +197,7 @@ input[type=color] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: var(--gray); */
     background-color: white;
-    /* border: 1px solid var(--darkgray); */
     word-wrap: break-word;
     padding: 1rem;
     border-radius: 0.3rem;

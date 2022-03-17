@@ -1,10 +1,20 @@
 var preset_values = {
+    " " : {
+        title : 'Presets..',
+        value : {
+            'inputt' : 'TEXT 1', 'slidert' : 150, 'sliderft' : 44,
+            'inputm' : 'TEXT 2', 'sliderm' : 0, 'sliderfm' : 44,
+            'inputb' : 'TEXT 3', 'sliderb' : 150, 'sliderfb' : 44,
+            'colorpicker' : '#0f6ea9',
+            'type' : 1, 'effect' : 1
+        }
+    },
     "qm22new" : {
         title : 'QM22 New',
         value : {
             'inputt' : 'CMS', 'slidert' : 100, 'sliderft' : 40,
-            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
             'inputm' : 'NEW RESULT', 'sliderm' : 0, 'sliderfm' : 40,
+            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
             'colorpicker' : '#A51D1D',
             'type' : 1, 'effect' : 1
         }
@@ -13,8 +23,8 @@ var preset_values = {
         title : 'QM22 Final',
         value : {
             'inputt' : 'CMS', 'slidert' : 100, 'sliderft' : 40,
-            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
             'inputm' : 'FINAL', 'sliderm' : 0, 'sliderfm' : 43,
+            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
             'colorpicker' : '#1D34A5',
             'type' : 1, 'effect' : 1
         }
@@ -33,6 +43,11 @@ function listpreset() {
         let opt = document.createElement('option');
         opt.value = key;
         opt.innerHTML = preset_values[key].title;
+        if(key == " ")
+        {
+            opt.disabled = true;
+            opt.selected = true;
+        }
         selpre.appendChild(opt);
     }
 }
