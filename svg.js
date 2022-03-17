@@ -165,7 +165,6 @@ function setattr() {
         effects[i].style.display = 'none';
         effects[i].style.filter = '';
         effects[i].style.mask = '';
-        // effects[i].style.filter = parseInt(document.getElementById('effect').value)>0?"url(#inkFilter)":"";
         if(document.getElementById('effect').value == 2)
             effects[i].style.filter = "url(#inkFilter2)";
         if(document.getElementById('effect').value == 1)
