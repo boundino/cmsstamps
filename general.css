@@ -46,7 +46,7 @@ h1 {
     font-weight: inherit;
 }
 
-a { text-decoration: none; }
+a { text-decoration: none; color: inherit; }
 a:visited { color: inherit; }
 
 input, button, select {
