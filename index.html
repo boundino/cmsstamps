@@ -48,14 +48,14 @@
     <script>listpreset(); reset(); geturl();</script>
     <div>
       <svg id="svg" height="356.25" width="356.25" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
-        <filter id="inkFilter2">
+        <filter id="inkFilter1">
           <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
           <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
         </filter>
         <defs>
-          <mask id="inkFilter1">
+          <mask id="inkFilter2">
             <!-- Only data uri external image in svg can be rendered in <img>  -->
-            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter1image" href=""/>
+            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter2image" href=""/>
           </mask>
         </defs>
         <text id="textt" dy="5">

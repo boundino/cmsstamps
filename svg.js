@@ -165,10 +165,10 @@ function setattr() {
         effects[i].style.display = 'none';
         effects[i].style.filter = '';
         effects[i].style.mask = '';
-        if(document.getElementById('effect').value == 2)
-            effects[i].style.filter = "url(#inkFilter2)";
         if(document.getElementById('effect').value == 1)
-            effects[i].style.mask = "url(#inkFilter1)";
+            effects[i].style.filter = "url(#inkFilter1)";
+        if(document.getElementById('effect').value == 2)
+            effects[i].style.mask = "url(#inkFilter2)";
     }
 
     let groupdraw = 'group' + document.getElementById('type').value;
