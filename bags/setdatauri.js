@@ -1,4 +1,4 @@
-function setdatauri(link) {
+function setdatauri(link, id) {
     var img = new Image();
     img.crossOrigin = "anonymous";
     img.src = link;
@@ -10,7 +10,7 @@ function setdatauri(link) {
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
         dataurl = canvas.toDataURL('image/png');
-        document.getElementById('inkFilter2image').setAttribute('href', dataurl);
+        document.getElementById(id).setAttribute('href', dataurl);
     }
     // document.body.appendChild(canvas);
     // document.body.removeChild(canvas);
