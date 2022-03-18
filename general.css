@@ -142,10 +142,10 @@ input[type=color] {
 }
 
 .footer {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--midgray);
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .setup {
