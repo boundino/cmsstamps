@@ -76,7 +76,6 @@ button {
     padding: var(--padding-tb) 0.8rem;
     text-align: center;
 }
-button:hover { filter: brightness(90%); }
 button:active { filter: brightness(50%); }
 
 select {
@@ -178,30 +177,24 @@ input[type=color] {
     font-weight: 200;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
     html { font-size: 2vw; }
     .alert { width: 40%;}
 }
 
-@media screen and (max-width: 900px) {
-    html { font-size: 3vw; }
-    .alert { width: 60%;}
-}
-
+/* ip13max: 428 x 926 */
 @media screen and (max-width: 500px) {
     html { font-size: 4vw; }
     .alert { width: 80%;}
     .hideinmobile { display: none; }
 }
 
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+@media (hover: hover) {
+    button:hover { filter: brightness(90%); }
 }
 
-object {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+/* canvas { */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/* } */
