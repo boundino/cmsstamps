@@ -48,29 +48,43 @@
     <script>listpreset(); reset(); geturl();</script>
     <div>
       <svg id="svg" height="356.25" width="356.25" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
-        <filter id="inkFilter1">
-          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
-          <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
-        </filter>
-        <mask id="inkFilter2">
-          <!-- Only data uri external image in svg can be rendered in <img>  -->
-          <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter2image" href=""/>
-        </mask>
-        <text id="textt" dy="5">
-          <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing"
-                    text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"
-                    class="fileffect group0 group1"></textPath>
-        </text>
-        <text id="textb" dy="5">
-          <textPath id="textpb" xlink:href="#innerb" startOffset="50%" lengthAdjust="spacing"
-                    text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"
-                    class="fileffect group0 group1"></textPath>
-        </text>
-        <text id="textm" dy="5" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"
-              class="fileffect group0 group1"></text>
+        <defs>
+          <filter id="inkFilter1">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="4" result="TURBULENCE"/>
+            <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="3" />
+          </filter>
+          <mask id="inkFilter2">
+            <!-- Only data uri external image in svg can be rendered in <img>  -->
+            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter2image" href=""/>
+          </mask>
+          <mask id="inkFilter3">
+            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter3image" href=""/>
+          </mask>
+          <filter id="inkFilter4">
+            <feGaussianBlur stdDeviation="2" in="SourceAlpha" result="BLUR"/>
+            <feSpecularLighting in="BLUR" style="lighting-color:white" specularExponent="100" result="SPEC">
+ 	      <feDistantLight azimuth="-90" elevation="50" />
+            </feSpecularLighting>
+            <feComposite operator="in" in="SPEC" in2="SourceAlpha" result="COMPOSITE"/>
+            <feMerge>
+              <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="COMPOSITE"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g id="g">
+          <text id="textt" dy="5">
+            <textPath id="textpt" xlink:href="#innert" startOffset="50%" lengthAdjust="spacing"
+                      text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"></textPath></text>
+          <text id="textb" dy="5">
+            <textPath id="textpb" xlink:href="#innerb" startOffset="50%" lengthAdjust="spacing"
+                      text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"></textPath></text>
+          <text id="textm" dy="5" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle"></text>
+        </g>
       </svg>
     </div>
     <script>setdatauri('https://boundino.github.io/cmsstamps/bags/Texture9.png', 'inkFilter2image')</script>
+    <script>setdatauri('https://boundino.github.io/cmsstamps/bags/Texture6.png', 'inkFilter3image')</script>
     <script>draw()</script>
     <div class="footer">CMS HIN &copy; 2022</div>
     <div id="dalert" class="alert" style="display:none"></div>

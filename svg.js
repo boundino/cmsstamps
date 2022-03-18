@@ -1,4 +1,4 @@
-var lcanvas, svg;
+var lcanvas, gg;
 function w() { return lcanvas*0.8; }
 function h() { return w()/4; }
 function theta() { return 15; }
@@ -6,8 +6,8 @@ function stroke_width() { return 6; }
 function color() { return document.getElementById('colorpicker').value; }
 
 function draw() {
-    svg = document.getElementById('svg');
-    lcanvas = svg.clientWidth;
+    gg = document.getElementById('g');
+    lcanvas = document.getElementById('svg').clientWidth;
 
     drawgroup(w()/2*0.9);
     drawrect();
@@ -23,9 +23,9 @@ function drawrect() {
     rect.setAttribute("width", w());
     rect.setAttribute("height", h());
     rect.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
-    rect.setAttribute("class", "graph group0 group1 fileffect");
+    rect.setAttribute("class", "graph group0 group1 groups");
     rect.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
-    svg.appendChild(rect);
+    gg.appendChild(rect);
 }
 
 function drawarc(R, s, id) {
@@ -43,16 +43,16 @@ function drawarc(R, s, id) {
         arc.setAttribute("d", "M "+x1+","+y1+" A "+R+","+R+" 0 0,1 "+x2+","+y2);
         arc.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()*s+";");
         arc.setAttribute("id", id+"t");
-        svg.appendChild(arc);
+        gg.appendChild(arc);
 
         let arc2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
         arc2.setAttribute("d", "M "+(lcanvas-x2)+","+(lcanvas-y2)+" A "+R+","+R+" 0 0,0 "+(lcanvas-x1)+","+(lcanvas-y1));
         arc2.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()*s+";");
         arc2.setAttribute("id", id+"b");
-        svg.appendChild(arc2);
+        gg.appendChild(arc2);
 
-        arc.setAttribute("class", "graph fileffect "+id);
-        arc2.setAttribute("class", "graph fileffect "+id);
+        arc.setAttribute("class", "graph groups "+id);
+        arc2.setAttribute("class", "graph groups "+id);
     }
 }
 
@@ -73,9 +73,9 @@ function drawdet(R, l, s, N, del, id) {
         brick.setAttribute("width", l);
         brick.setAttribute("height", s);
         brick.setAttribute("style", "stroke-width:0;");
-        brick.setAttribute("class", "graphf fileffect "+id);
+        brick.setAttribute("class", "graphf groups "+id);
         brick.setAttribute("transform", "rotate("+(-alpha*180/Math.PI+del)+" "+x+","+y+")");
-        svg.appendChild(brick);
+        gg.appendChild(brick);
         let brick2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         brick2.setAttribute("x", (lcanvas-x)-l/2);
         brick2.setAttribute("y", (lcanvas-y)-s/2);
@@ -84,9 +84,9 @@ function drawdet(R, l, s, N, del, id) {
         brick2.setAttribute("width", l);
         brick2.setAttribute("height", s);
         brick2.setAttribute("style", "stroke-width:0;");
-        brick2.setAttribute("class", "graphf fileffect "+id);
+        brick2.setAttribute("class", "graphf groups "+id);
         brick2.setAttribute("transform", "rotate("+(-alpha*180/Math.PI+del)+" "+(lcanvas-x)+","+(lcanvas-y)+")");
-        svg.appendChild(brick2);
+        gg.appendChild(brick2);
     }
 }
 
@@ -159,18 +159,21 @@ function setattr() {
     for(var i=0; i<graphfs.length; i++)
         graphfs[i].style.fill = color();
 
-    let effects = document.getElementsByClassName('fileffect');
-    for(var i=0; i<effects.length; i++)
+    let ieffect = document.getElementById('g');
+    ieffect.style.filter = '';
+    ieffect.style.mask = '';
+    let ifil = document.getElementById('effect').value;
+    if(ifil > 0)
     {
-        effects[i].style.display = 'none';
-        effects[i].style.filter = '';
-        effects[i].style.mask = '';
-        if(document.getElementById('effect').value == 1)
-            effects[i].style.filter = "url(#inkFilter1)";
-        if(document.getElementById('effect').value == 2)
-            effects[i].style.mask = "url(#inkFilter2)";
+        if(ifil == 1 || ifil == 4)
+            ieffect.style.filter = "url(#inkFilter"+ifil+")";
+        else
+            ieffect.style.mask = "url(#inkFilter"+ifil+")";
     }
 
+    let groups = document.getElementsByClassName('groups');
+    for(var i=0; i<groups.length; i++)
+        groups[i].style.display = 'none';
     let groupdraw = 'group' + document.getElementById('type').value;
     let groupdraws = document.getElementsByClassName(groupdraw);
     for(var i=0; i<groupdraws.length; i++)
@@ -187,6 +190,6 @@ function changetype()
 
 function changeeffect()
 {
-    document.getElementById('effect').value = (parseInt(document.getElementById('effect').value)+1)%3;
+    document.getElementById('effect').value = (parseInt(document.getElementById('effect').value)+1)%5;
     setattr();
 }
