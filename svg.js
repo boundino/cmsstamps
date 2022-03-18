@@ -23,7 +23,7 @@ function drawrect() {
     rect.setAttribute("width", w());
     rect.setAttribute("height", h());
     rect.setAttribute("style", "fill:transparent; stroke-width:"+stroke_width()+";");
-    rect.setAttribute("class", "graph group0 group1 groups");
+    rect.setAttribute("class", "graph");
     rect.setAttribute("transform", "rotate(-"+theta()+" "+lcanvas*0.5+","+lcanvas*0.5+")");
     gg.appendChild(rect);
 }
@@ -91,14 +91,17 @@ function drawdet(R, l, s, N, del, id) {
 }
 
 function drawgroup(R) {
-    // arc
+    drawarc(h()/2*1.5, 1, "always");
+    drawarc((R-stroke_width()*3 + h()/2*1.5)/2, 1, "inner");
+    // group0
     drawarc(R, 1.8, "group0");
     drawarc(R-stroke_width()*3, 1, "group0");
-    drawarc(h()/2*1.5, 1, "group0 group1");
-    drawarc((R-stroke_width()*3 + h()/2*1.5)/2, 1, "inner");
-    // det
+    // group1
     drawdet(R, R*0.53, w()/25, 5, 6, "group1");
     drawdet(R-w()/16, (R-w()/16)*0.53, w()/40, 5, 0, "group1");
+    // group2
+    drawdet(R, R*0.55, w()/30, 5, 0, "group2");
+    drawdet(R-w()/16, (R-w()/16)*0.5, w()/35, 5, 4, "group2");
 }
 
 function setattr() {
@@ -173,18 +176,18 @@ function setattr() {
 
     let groups = document.getElementsByClassName('groups');
     for(var i=0; i<groups.length; i++)
-        groups[i].style.display = 'none';
+        if(groups[i].classList.contains('always') == false)
+            groups[i].style.display = 'none';
     let groupdraw = 'group' + document.getElementById('type').value;
     let groupdraws = document.getElementsByClassName(groupdraw);
     for(var i=0; i<groupdraws.length; i++)
         groupdraws[i].style.display = 'block';    
-    
     // seturl();
 }
 
 function changetype()
 {
-    document.getElementById('type').value = (parseInt(document.getElementById('type').value)+1)%2;
+    document.getElementById('type').value = (parseInt(document.getElementById('type').value)+1)%3;
     setattr();
 }
 
