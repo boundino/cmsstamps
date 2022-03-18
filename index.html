@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1b7d79a1ac.js" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-    <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
     <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -14,6 +13,7 @@
     <title>CMS Stamp Generator</title>
   </head>
   <body>
+    <script src="bags/Texture9.js"></script>
     <script src="svg.js"></script>
     <script src="preset.js"></script>
     <script src="save.js"></script>
@@ -49,12 +49,13 @@
     <div>
       <svg id="svg" height="356.25" width="356.25" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
         <filter id="inkFilter2">
-            <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
-            <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
-          </filter>
+          <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="4" result="TURBULENCE"/>
+          <feDisplacementMap in="SourceGraphic" in2="TURBULENCE" scale="4" />
+        </filter>
         <defs>
           <mask id="inkFilter1">
-            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xlink:href="https://boundino.github.io/cmsstamps/bags/Texture9.png"/>
+            <!-- Only data uri external image in svg can be rendered in <img>  -->
+            <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" id="inkFilter1image" href=""/>
           </mask>
         </defs>
         <text id="textt" dy="5">
@@ -66,6 +67,7 @@
         <text id="textm" dy="5" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="fileffect group0 group1"></text>
       </svg>
     </div>
+    <script>setdatauri()</script>
     <script>draw()</script>
     <div class="footer">CMS HIN &copy; 2022</div>
     <div id="dalert" class="alert" style="display:none"></div>

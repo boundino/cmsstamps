@@ -194,3 +194,14 @@ input[type=color] {
     .hideinmobile { display: none; }
 }
 
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+object {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

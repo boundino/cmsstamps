@@ -5,8 +5,8 @@
 function saveaspng()
 {
     var svgString = getSVGString(d3.select('svg').node());
-    svgString2Image( svgString, lcanvas, lcanvas, 'png', save );
 
+    svgString2Image( svgString, lcanvas, lcanvas, 'png', save );
     function save( dataBlob, filesize )
     {
         saveAs( dataBlob, 'cmsStamp.png' );
@@ -41,39 +41,39 @@ function getSVGString( svgNode )
 	// Add Children element Ids and Classes to the list
 	var nodes = parentElement.getElementsByTagName("*");
 	for (var i = 0; i < nodes.length; i++)
-            {
-                var id = nodes[i].id;
-                if ( !contains('#'+id, selectorTextArr) )
-                    selectorTextArr.push( '#'+id );
+        {
+            var id = nodes[i].id;
+            if ( !contains('#'+id, selectorTextArr) )
+                selectorTextArr.push( '#'+id );
 
-                var classes = nodes[i].classList;
-                for (var c = 0; c < classes.length; c++)
-                    if ( !contains('.'+classes[c], selectorTextArr) )
-                        selectorTextArr.push( '.'+classes[c] );
-            }
+            var classes = nodes[i].classList;
+            for (var c = 0; c < classes.length; c++)
+                if ( !contains('.'+classes[c], selectorTextArr) )
+                    selectorTextArr.push( '.'+classes[c] );
+        }
         
 	// Extract CSS Rules
 	var extractedCSSText = "";
 	for (var i = 0; i < document.styleSheets.length; i++)
-            {
-                var s = document.styleSheets[i];
-                if(s.href === null) continue;
-                if(!s.href.includes("svg.css")) continue;
+        {
+            var s = document.styleSheets[i];
+            if(s.href === null) continue;
+            if(!s.href.includes("svg.css")) continue;
 
-                try {
-                    if(!s.cssRules) continue;
-                } catch( e ) {
-                    if(e.name !== 'SecurityError') throw e; // for Firefox
-                    continue;
-                }
-
-                var cssRules = s.cssRules;
-                for (var r = 0; r < cssRules.length; r++)
-                    {
-                        // if ( contains( cssRules[r].selectorText, selectorTextArr ) ) // will not work with ,
-                        extractedCSSText += cssRules[r].cssText;
-                    }
+            try {
+                if(!s.cssRules) continue;
+            } catch( e ) {
+                if(e.name !== 'SecurityError') throw e; // for Firefox
+                continue;
             }
+
+            var cssRules = s.cssRules;
+            for (var r = 0; r < cssRules.length; r++)
+            {
+                // if ( contains( cssRules[r].selectorText, selectorTextArr ) ) // will not work with ,
+                extractedCSSText += cssRules[r].cssText;
+            }
+        }
 	
 	return extractedCSSText;
 
@@ -93,12 +93,25 @@ function getSVGString( svgNode )
     }
 }
 
+function savesvg(svgString, name)
+{
+    var svgUrl = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ); // Convert SVG string to data URL
+    var downloadLink = document.createElement("a");
+    downloadLink.href = svgUrl;
+    downloadLink.download = name;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    delete downloadLink;
+}
+
 
 function svgString2Image( svgString, width, height, format, callback )
 {
     var format = format ? format : 'png';
 
     var imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ); // Convert SVG string to data URL
+    // console.log(imgsrc);
 
     var canvas = document.createElement("canvas");
     var context = canvas.getContext("2d");
@@ -109,16 +122,16 @@ function svgString2Image( svgString, width, height, format, callback )
 
     var image = new Image();
     image.onload = function() {
-	context.clearRect ( 0, 0, width, height );
-	context.drawImage(image, 0, 0, width, height);
+        context.clearRect ( 0, 0, width, height );
+        context.drawImage(image, 0, 0, width, height);
 
-	canvas.toBlob( function(blob) {
-                var filesize = Math.round( blob.length/1024 ) + ' KB';
-                if ( callback ) callback( blob, filesize );
-            });
-
-	
+        canvas.toBlob( function(blob) {
+            var filesize = Math.round( blob.length/1024 ) + ' KB';
+            if ( callback ) callback( blob, filesize );
+        });
     };
-
     image.src = imgsrc;
+
+    // For debug ->
+    // document.body.appendChild(canvas);
 }
