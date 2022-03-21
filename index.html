@@ -37,14 +37,16 @@
       <input type="range" min="60" max="180" class="slider" id="sliderb" oninput="setattr()">
       <i class="fa-solid fa-text-height"></i>
       <input type="range" min="20" max="60" class="slider" id="sliderfb" oninput="setattr()"></div>
-    <div class="setup"><i class="fa-solid fa-fill-drip hideinmobile"></i>
-      <input type="color" id="colorpicker" onchange="setattr(); ">
-      <button onclick="changetype();"><i class="fa-solid fa-repeat"></i><input type="number" id="type" style="display:none"></input></button>
-      <button onclick="changeeffect();"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
-      <button onclick="saveaspng();"><i class="fa-solid fa-download"></i></button>
-      <button onclick="copylink();"><i class="fa-solid fa-clipboard"></i></button>
-      <select id="presets" onchange="reset(); setattr();"></select>
+    <div class="setup" onmouseleave="rmdesc();">
+      <!-- <i class="fa-solid fa-fill-drip hideinmobile"></i> -->
+      <input type="color" id="colorpicker" onchange="setattr();" onmouseover="showdesc(this, 'Color');">
+      <button onclick="changetype();" onmouseover="showdesc(this, 'Shape');"><i class="fa-solid fa-repeat"></i><input type="number" id="type" style="display:none"></input></button>
+      <button onclick="changeeffect();" onmouseover="showdesc(this, 'Effect');"><i class="fa-solid fa-stamp"></i><input type="number" id="effect" style="display:none"></input></button>
+      <button onclick="saveaspng();" onmouseover="showdesc(this, 'Save as PNG');"><i class="fa-solid fa-download"></i></button>
+      <button onclick="copylink();" onmouseover="showdesc(this, 'Copy setup');"><i class="fa-solid fa-clipboard"></i></button>
+      <select id="presets" onchange="reset(); setattr();" onmouseover="showdesc(this, 'Use presets');"></select>
     </div>
+    <div id="desc" class='desc'></div>
     <script>listpreset(); reset(); geturl();</script>
     <div>
       <svg id="svg" height="356.25" width="356.25" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
@@ -83,8 +85,6 @@
         </g>
       </svg>
     </div>
-    <script>setdatauri('https://boundino.github.io/cmsstamps/bags/Texture9.png', 'inkFilter2image')</script>
-    <script>setdatauri('https://boundino.github.io/cmsstamps/bags/Texture6.png', 'inkFilter3image')</script>
     <script>draw()</script>
     <div class="footer">CMS HIN &copy; 2022</div>
     <div id="dalert" class="alert" style="display:none"></div>

@@ -6,6 +6,8 @@ function stroke_width() { return 6; }
 function color() { return document.getElementById('colorpicker').value; }
 
 function draw() {
+    setdatauri('https://boundino.github.io/cmsstamps/bags/Texture9.png', 'inkFilter2image');
+    setdatauri('https://boundino.github.io/cmsstamps/bags/Texture6.png', 'inkFilter3image');
     gg = document.getElementById('g');
     lcanvas = document.getElementById('svg').clientWidth;
 

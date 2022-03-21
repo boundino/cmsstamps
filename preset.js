@@ -95,3 +95,20 @@ function copylink()
         cl.style.display = 'none';
     }, 1500); // match animation 'flash'
 }
+
+function showdesc(el, text)
+{
+    if(window.matchMedia("(hover: hover)").matches) {
+        var rect = el.getBoundingClientRect();
+        var cl = document.getElementById('desc');
+        cl.style.top = (rect.bottom+3) + 'px';
+        cl.style.left = rect.left + 'px';
+        cl.innerHTML = '<i class="fa-solid fa-arrow-up" style="font-size: 0.7rem;"></i> ' + text;
+        cl.style.display = 'block';
+    }
+}
+
+function rmdesc()
+{
+    document.getElementById('desc').style.display = 'none';
+}
