@@ -12,21 +12,21 @@ var preset_values = {
     "qm22new" : {
         title : 'QM22 New',
         value : {
-            'inputt' : 'CMS', 'slidert' : 100, 'sliderft' : 40,
+            'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
             'inputm' : 'NEW RESULT', 'sliderm' : 0, 'sliderfm' : 40,
-            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
+            'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
             'colorpicker' : '#A51D1D',
-            'type' : 0, 'effect' : 2
+            'type' : 1, 'effect' : 2
         }
     },
     "qm22final" : {
         title : 'QM22 Final',
         value : {
-            'inputt' : 'CMS', 'slidert' : 100, 'sliderft' : 40,
+            'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
             'inputm' : 'FINAL', 'sliderm' : 0, 'sliderfm' : 44,
-            'inputb' : 'QM22', 'sliderb' : 120, 'sliderfb' : 40,
+            'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
             'colorpicker' : '#1D34A5',
-            'type' : 0, 'effect' : 2
+            'type' : 1, 'effect' : 2
         }
     }
 }
