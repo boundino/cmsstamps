@@ -5,8 +5,8 @@ var preset_values = {
             'inputt' : 'TEXT 1', 'slidert' : 145, 'sliderft' : 40,
             'inputm' : 'TEXT 2', 'sliderm' : 0, 'sliderfm' : 44,
             'inputb' : 'TEXT 3', 'sliderb' : 150, 'sliderfb' : 40,
-            'colorpicker' : '#0f6ea9',
-            'type' : 1, 'effect' : 2
+            'colorpicker' : '#940000',
+            'type' : 2, 'effect' : 1
         }
     },
     "qm22new" : {
