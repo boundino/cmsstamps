@@ -2,10 +2,10 @@ var preset_values = {
     " " : {
         title : 'Presets..',
         value : {
-            'inputt' : 'TEXT 1', 'slidert' : 145, 'sliderft' : 40,
-            'inputm' : 'TEXT 2', 'sliderm' : 0, 'sliderfm' : 44,
+            'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
+            'inputm' : 'NEW RESULT', 'sliderm' : 0, 'sliderfm' : 40,
             'inputb' : 'TEXT 3', 'sliderb' : 150, 'sliderfb' : 40,
-            'colorpicker' : '#940000',
+            'colorpicker' : '#121212',
             'type' : 2, 'effect' : 1
         }
     },
@@ -16,7 +16,7 @@ var preset_values = {
             'inputm' : 'NEW RESULT', 'sliderm' : 0, 'sliderfm' : 40,
             'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
             'colorpicker' : '#A51D1D',
-            'type' : 1, 'effect' : 2
+            'type' : 2, 'effect' : 2
         }
     },
     "qm22final" : {
@@ -26,7 +26,7 @@ var preset_values = {
             'inputm' : 'FINAL', 'sliderm' : 0, 'sliderfm' : 44,
             'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
             'colorpicker' : '#1D34A5',
-            'type' : 1, 'effect' : 2
+            'type' : 2, 'effect' : 2
         }
     }
 }
