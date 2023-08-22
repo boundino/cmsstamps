@@ -9,26 +9,36 @@ var preset_values = {
             'type' : 2, 'effect' : 1
         }
     },
-    "qm22new" : {
-        title : 'QM22 New',
+    "qm23new" : {
+        title : 'QM23 New Result',
         value : {
             'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
             'inputm' : 'NEW RESULT', 'sliderm' : 0, 'sliderfm' : 40,
-            'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
-            'colorpicker' : '#A51D1D',
+            'inputb' : 'QM23', 'sliderb' : 136, 'sliderfb' : 43,
+            'colorpicker' : '#d9534f',
             'type' : 2, 'effect' : 2
         }
     },
     "qm22final" : {
-        title : 'QM22 Final',
+        title : 'QM23 Final Result',
         value : {
             'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
-            'inputm' : 'FINAL', 'sliderm' : 0, 'sliderfm' : 44,
-            'inputb' : 'QM22', 'sliderb' : 124, 'sliderfb' : 43,
-            'colorpicker' : '#1D34A5',
+            'inputm' : 'FINAL RESULT', 'sliderm' : 0, 'sliderfm' : 37,
+            'inputb' : 'QM23', 'sliderb' : 136, 'sliderfb' : 43,
+            'colorpicker' : '#3085b8',
             'type' : 2, 'effect' : 2
         }
-    }
+    },
+    "qm23data" : {
+        title : 'QM23 New DATA',
+        value : {
+            'inputt' : 'CMS', 'slidert' : 105, 'sliderft' : 43,
+            'inputm' : 'NEW DATA', 'sliderm' : 0, 'sliderfm' : 40,
+            'inputb' : 'QM23', 'sliderb' : 136, 'sliderfb' : 43,
+            'colorpicker' : '#d9534f',
+            'type' : 2, 'effect' : 2
+        }
+    },
 }
 
 var setup = ['inputt', 'slidert', 'sliderft',
